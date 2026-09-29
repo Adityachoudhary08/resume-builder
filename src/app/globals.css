@@ -1,8 +1,21 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0b0b0c;
+  --foreground: #f4f4f5;
+  --surface: #141416;
+  --surface-muted: #1c1c1f;
+  --border: #2a2a2e;
+  --muted: #a1a1aa;
+}
+
+html[data-theme="light"] {
+  --background: #f4f4f5;
+  --foreground: #18181b;
+  --surface: #ffffff;
+  --surface-muted: #e4e4e7;
+  --border: #d4d4d8;
+  --muted: #52525b;
 }
 
 @theme inline {
@@ -12,15 +25,180 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), sans-serif;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+a:focus-visible {
+  outline: 2px solid #d4d4d8;
+  outline-offset: 2px;
+}
+
+.nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 0.5rem;
+  min-width: 7rem;
+  justify-content: center;
+  padding: 0.55rem 0.8rem;
+  color: #a1a1aa;
+  font-size: 0.875rem;
+  transition: color 150ms, background-color 150ms;
+}
+
+.nav-glass {
+  border-radius: 0.75rem;
+  border: 1px solid rgb(63 63 70 / 0.65);
+  background-color: rgb(9 9 11 / 0.62);
+  box-shadow: 0 8px 30px rgb(0 0 0 / 0.12);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.sign-in-link {
+  border-radius: 0.5rem;
+  padding: 0.55rem 0.8rem;
+  color: #fafafa;
+  font-size: 0.875rem;
+  font-weight: 700;
+  transition: background-color 150ms, color 150ms;
+}
+
+.sign-in-link:hover {
+  background-color: #27272a;
+}
+
+.nav-link:hover {
+  background-color: #1c1c1f;
+  color: #fafafa;
+}
+
+/* Keep the existing builder controls neutral without changing their behavior. */
+.bg-violet-300,
+.bg-teal-300,
+.bg-pink-200 {
+  background-color: #e4e4e7 !important;
+}
+
+.hover\:bg-violet-200:hover,
+.hover\:bg-teal-200:hover,
+.hover\:bg-pink-100:hover {
+  background-color: #fafafa !important;
+}
+
+.text-violet-950,
+.text-teal-950,
+.text-pink-950 {
+  color: #18181b !important;
+}
+
+.text-violet-400,
+.text-violet-600,
+.text-violet-700 {
+  color: #d4d4d8 !important;
+}
+
+.bg-violet-400 {
+  background-color: #d4d4d8 !important;
+}
+
+.focus\:ring-violet-400:focus,
+.focus\:ring-violet-500:focus {
+  --tw-ring-color: #a1a1aa !important;
+}
+
+html[data-theme="light"] body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+html[data-theme="light"] .bg-zinc-950,
+html[data-theme="light"] .bg-slate-950 {
+  background-color: #f4f4f5 !important;
+}
+
+html[data-theme="light"] .bg-zinc-900,
+html[data-theme="light"] .bg-slate-900,
+html[data-theme="light"] .bg-zinc-900\/60 {
+  background-color: #ffffff !important;
+}
+
+html[data-theme="light"] .border-zinc-800,
+html[data-theme="light"] .border-slate-800,
+html[data-theme="light"] .border-zinc-700,
+html[data-theme="light"] .border-slate-700 {
+  border-color: #d4d4d8 !important;
+}
+
+html[data-theme="light"] .text-zinc-100,
+html[data-theme="light"] .text-zinc-200,
+html[data-theme="light"] .text-slate-100,
+html[data-theme="light"] .text-slate-200 {
+  color: #18181b !important;
+}
+
+html[data-theme="light"] .text-zinc-300,
+html[data-theme="light"] .text-zinc-400,
+html[data-theme="light"] .text-zinc-500,
+html[data-theme="light"] .text-slate-300,
+html[data-theme="light"] .text-slate-400 {
+  color: #52525b !important;
+}
+
+html[data-theme="light"] .hover\:bg-zinc-800:hover,
+html[data-theme="light"] .hover\:bg-slate-800:hover {
+  background-color: #e4e4e7 !important;
+}
+
+html[data-theme="light"] .fixed.bg-zinc-900 {
+  background-color: #ffffff !important;
+  color: #3f3f46 !important;
+}
+
+html[data-theme="light"] .nav-link {
+  color: #52525b;
+}
+
+html[data-theme="light"] .nav-link:hover {
+  background-color: #e4e4e7;
+  color: #18181b;
+}
+
+html[data-theme="light"] .nav-glass {
+  border-color: rgb(212 212 216 / 0.75);
+  background-color: rgb(255 255 255 / 0.7);
+}
+
+html[data-theme="light"] .sign-in-link {
+  color: #18181b;
+}
+
+html[data-theme="light"] .sign-in-link:hover {
+  background-color: #e4e4e7;
+}
+
+@media print {
+  .preview-actions,
+  .nav-glass,
+  body > header {
+    display: none !important;
+  }
+
+  .resume-preview {
+    box-shadow: none !important;
+  }
 }
